@@ -20,7 +20,8 @@ public class FilmMapper implements RowMapper<FilmModel> {
 			film.setCurrentEpisode(resultSet.getInt("current_episode"));
 			film.setRate(resultSet.getInt("rate"));
 			 try {
-				 film.setCategoryCode(resultSet.getString("name"));
+				 film.setCategoryCode(resultSet.getString("code"));
+				 film.setCategoryName(resultSet.getString("name"));
 			 } catch (Exception e) {
 				 
 			 }

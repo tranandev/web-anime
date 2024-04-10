@@ -5,6 +5,7 @@ public class FilmModel extends AbstractModel<FilmModel>{
 	private String title;
 	private Integer categoryId;
 	private String categoryCode;
+	private String categoryName;
 	private Integer view;
 	private Integer episode;
 	private Integer currentEpisode;
@@ -100,6 +101,12 @@ public class FilmModel extends AbstractModel<FilmModel>{
 	}
 	public void setSortBy(String sortBy) {
 		this.sortBy = sortBy;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	

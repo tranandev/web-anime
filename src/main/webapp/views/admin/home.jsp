@@ -1,91 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/common/taglib.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trang chủ</title>
-<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div class="container">
-		<h1>Chào mừng đến với trang Admin của chúng tôi!</h1>
-
-		<c:if test="${not empty USERMODEL}">
-			<li class="nav-item"><a class="nav-link" href='#'>Wellcome,
-					${USERMODEL.fullName}</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href='<c:url value="/admin-new?action=newfilm"/>'>Thêm Film</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href='<c:url value="/thoat?action=logout"/>'>Thoát</a></li>
-		</c:if>
-
 <div class="main-content">
-		<form action="<c:url value='/admin-home'/>" id="formSubmit" method="get">
-		<table border="1px solid black">
-			<tr>
-				<th>Tên Anime</th>
-				<th>Thể Loại</th>
-				<th>Ảnh</th>
-				<th>Lượt View</th>
-				<th>Sô Tập</th>
-				<th>Số Tập Hiện Tại</th>
-				<th>Đánh Giá</th>
-			</tr>
-			<c:forEach var="item" items="${films}">
-				<tr>
-					<td>${item.title}</td>
-					<td>${item.categoryName}</td>
-					<td><img src="images/film/${item.photo}" width="100"/></td>
-					<td>${item.view}</td>
-					<td>${item.episode}</td>
-					<td>${item.currentEpisode}</td>
-					<td>${item.rate}</td>
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Trang chủ</a>
+                </li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+        <div class="page-content">
+            <div class="row" >
+                <div class="col-xs-12">
 
-					<td><a
-						href="<c:url value='/admin-new?action=edit&id=${item.id}'/>">update</a>
-						
-						 <a href="<c:url value='/admin-new?action=delete&id=${item.id}'/>">delete</a>
-				</tr>
-			</c:forEach>
-
-		</table>
-		<div class="container">
-			<nav aria-label="Page navigation">
-				<ul class="pagination" id="pagination"></ul>
-				<input type="hidden" value="" id="page" name="page" />
-				<input type="hidden" value="" id="maxPageItem" name="maxPageItem" />
-				<input type="hidden" value="" id="sortName" name="sortName" />
-				<input type="hidden" value="" id="sortBy" name="sortBy" />
-			</nav>
-		</div>
-		</form>
-		</div>
-	</div>
-	
-	<script type="text/javascript">
-		var totalPage = ${filmModel.totalPage};
-		var currentPage = ${filmModel.page};
-		var limit = 5; 
-		$(function () {
-		        window.pagObj = $('#pagination').twbsPagination({
-		            totalPages: totalPage,
-		            visiblePages: 10,
-		            startPage: currentPage,
-		        	onPageClick: function (event, page) {
-						if (currentPage != page) {
-							$('#maxPageItem').val(limit);
-							$('#page').val(page);
-							$('#sortName').val('title');
-							$('#sortBy').val('asc');			
-							$('#formSubmit').submit();
-						}
-					}
-				});
-			});
-	</script>
-	
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.main-content -->
 </body>
 </html>

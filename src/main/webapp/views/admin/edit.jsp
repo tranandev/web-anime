@@ -19,7 +19,8 @@
 			<li class="nav-item"><a class="nav-link"
 				href='<c:url value="/thoat?action=logout"/>'>Thoát</a></li>
 		</c:if>
-		<form action="<c:url value='/admin-new?type=edit'/>" id="formEdit" method="post" enctype="multipart/form-data">
+		<form action="<c:url value='/admin-new?type=edit'/>" id="formEdit"
+			method="post" enctype="multipart/form-data">
 
 			<div class="form-group">
 				<input type="text" class="form-control" id="title" name="title"
@@ -36,10 +37,10 @@
 			</div>
 
 			<div class="form-group">
-		    	<img src="images/film/${film.photo}" width="100"/>
-				<input type="file" class="form-control" id="photo" name="photo">
+				<img src="images/film/${film.photo}" width="100" /> <input
+					type="file" class="form-control" id="photo" name="photo">
 			</div>
-			
+
 			<div class="form-group">
 				<input type="text" class="form-control" id="episode" name="episode"
 					value="${film.episode}">
@@ -49,8 +50,8 @@
 				<input type="text" class="form-control" id="currentEpisode"
 					name="currentEpisode" value="${film.currentEpisode}">
 			</div>
-			<input type="hidden" value="${film.id}" name="id" />
-			<input type="hidden" value="${film.photo}" id = "oldPhoto" name="oldPhoto" />
+			<input type="hidden" value="${film.id}" name="id" /> <input
+				type="hidden" value="${film.photo}" id="oldPhoto" name="oldPhoto" />
 			<button type="submit" class="btn btn-primary">Thêm</button>
 
 		</form>
