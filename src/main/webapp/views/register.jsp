@@ -14,7 +14,7 @@
                 <c:if test="${not empty message}">
                     <div class="alert alert-${alert}">${message}</div>
                 </c:if>
-                <form action="<c:url value='/dang-ki'/>" id="formLogin" method="post" enctype="multipart/form-data">
+                <form action="<c:url value='/dang-ki'/>" id="formLogin" method="post">
                     <div class="form-group">
                         <input type="text" class="form-control" id="userName" name="userName" placeholder="Tên đăng nhập">
                     </div>
