@@ -1,10 +1,8 @@
 package com.anime.model;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
-public class AbstractModel<T> {
+public class AbstractModel {
 	
 	private Long id;
 	private String photo;

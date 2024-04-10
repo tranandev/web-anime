@@ -2,16 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trang chủ</title>
-<link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 	<div class="container">
-		<h1>Chào mừng đến với trang New Film của chúng tôi!</h1>
+		<h1>Chào mừng đến với trang New Film</h1>
 
 		<c:if test="${not empty USERMODEL}">
 			<li class="nav-item"><a class="nav-link" href='#'>Wellcome,
@@ -22,8 +19,7 @@
 		<form action="<c:url value='/admin-new?type=newfilm'/>" id="formNew" method="post" enctype="multipart/form-data">
 
 			<div class="form-group">
-				<input type="text" class="form-control" id="title" name="title"
-					placeholder="Tên Film">
+				<input type="text" class="form-control" id="title" name="title" placeholder="Tên Film">
 			</div>
 
 			<div class="form-group">
@@ -36,18 +32,15 @@
 			</div>
 			
 				<div class="form-group">
-				<input type="file" class="form-control" id="photo" name="photo"
-					placeholder="Ảnh">
+				<input type="file" class="form-control" id="photo" name="photo" placeholder="Ảnh">
 			</div>
 
 			<div class="form-group">
-				<input type="text" class="form-control" id="episode" name="episode"
-					placeholder="Số Tập">
+				<input type="text" class="form-control" id="episode" name="episode" placeholder="Số Tập">
 			</div>
 
 			<div class="form-group">
-				<input type="text" class="form-control" id="currentEpisode"
-					name="currentEpisode" placeholder="Sô tập hiện tại">
+				<input type="text" class="form-control" id="currentEpisode" name="currentEpisode" placeholder="Số tập hiện tại">
 			</div>
 
 			<!-- <input type="hidden" value="newfilm" name="type" /> -->

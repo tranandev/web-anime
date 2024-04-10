@@ -1,6 +1,6 @@
 package com.anime.model;
 
-public class UserModel extends AbstractModel<UserModel> {
+public class UserModel extends AbstractModel {
 	
 	private String userName;
 	private String fullName;

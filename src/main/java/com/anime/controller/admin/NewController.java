@@ -102,8 +102,7 @@ public class NewController extends HttpServlet {
 
 	}
 	
-	
-	private void photoUpload(HttpServletRequest request, FilmModel f) {
+private void photoUpload(HttpServletRequest request, FilmModel f) {
 		
 		// cấu hình upload
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -125,7 +124,6 @@ public class NewController extends HttpServlet {
 			// phân tích request để lấy dữ liệu
 			List<FileItem> formItems = upload.parseRequest(request);
 			// lấy bộ lặp chứa các fileitem
-			@SuppressWarnings("rawtypes")
 			Iterator iter = formItems.iterator();
 			// lặp qua từng trường trên form
 			while (iter.hasNext()) {

@@ -40,7 +40,17 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 		sql.append(" ORDER BY view DESC LIMIT 6");
 		List<FilmModel> films = query(sql.toString(), new FilmMapper());
 		return films;
-
+	}
+	
+	@Override
+	public List<FilmModel> findByRecentlyAdd() {
+		// TODO Auto-generated method stub
+		
+		StringBuilder sql = new StringBuilder("SELECT * FROM film AS f");
+		sql.append(" INNER JOIN category AS c ON f.id = c.id");
+		sql.append(" ORDER BY f.createddate DESC LIMIT 6");
+		List<FilmModel> films = query(sql.toString(), new FilmMapper());
+		return films;
 	}
 
 	@Override
@@ -100,6 +110,8 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 		String sql = "DELETE FROM film WHERE id = ?";
 		update(sql, id);
 	}
+
+
 
 
 }

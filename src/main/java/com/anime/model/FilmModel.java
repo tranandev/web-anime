@@ -1,10 +1,9 @@
 package com.anime.model;
 
-public class FilmModel extends AbstractModel<FilmModel>{
+public class FilmModel extends AbstractModel{
 
 	private String title;
 	private Integer categoryId;
-	private String categoryCode;
 	private String categoryName;
 	private Integer view;
 	private Integer episode;
@@ -30,11 +29,12 @@ public class FilmModel extends AbstractModel<FilmModel>{
 		this.categoryId = categoryId;
 	}
 	
-	public String getCategoryCode() {
-		return categoryCode;
+	
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setCategoryCode(String categoryCode) {
-		this.categoryCode = categoryCode;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	public Integer getView() {
 		return view;
@@ -102,13 +102,5 @@ public class FilmModel extends AbstractModel<FilmModel>{
 	public void setSortBy(String sortBy) {
 		this.sortBy = sortBy;
 	}
-	public String getCategoryName() {
-		return categoryName;
-	}
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
-	
 	
 }

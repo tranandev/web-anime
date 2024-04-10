@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.anime.model.UserModel;
+import com.anime.service.IFilmService;
 import com.anime.service.IUserService;
+import com.anime.service.impl.FilmService;
 import com.anime.utils.FormUtil;
 import com.anime.utils.SessionUtil;
 
@@ -21,6 +23,9 @@ public class HomeController extends HttpServlet {
 
 	@Inject
 	IUserService userService;
+	
+	@Inject
+	IFilmService filmService;
 	private static final long serialVersionUID = 1L;
 	
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
@@ -42,6 +47,9 @@ public class HomeController extends HttpServlet {
 			SessionUtil.getInstance().removeValue(request, "USERMODEL");
 			response.sendRedirect(request.getContextPath()+"/trang-chu");
 		} else {
+			
+			request.setAttribute("film", filmService.findByPopular());
+			request.setAttribute("film2", filmService.findByRecentlyAdd());
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
 			rd.forward(request, response);
 		}
@@ -59,7 +67,7 @@ public class HomeController extends HttpServlet {
 				if (model.getRole().getCode().equals("USER")) {
 					response.sendRedirect(request.getContextPath()+"/trang-chu");
 				} else if (model.getRole().getCode().equals("ADMIN")) {
-					response.sendRedirect(request.getContextPath()+"/admin-home?page=1&maxPageItem=5&sortName=title&sortBy=asc");
+					response.sendRedirect(request.getContextPath()+"/admin-home");
 				}
 			} else {
 				response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=username_password_invalid&alert=danger");

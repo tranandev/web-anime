@@ -1,6 +1,6 @@
 package com.anime.model;
 
-public class CategoryModel extends AbstractModel<CategoryModel> {
+public class CategoryModel extends AbstractModel {
 	private String name;
 	private String code;
 

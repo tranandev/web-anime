@@ -1,6 +1,6 @@
 package com.anime.model;
 
-public class RoleModel extends AbstractModel<RoleModel> {
+public class RoleModel extends AbstractModel {
 	
 	private String code;
 	private String name;

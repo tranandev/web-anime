@@ -13,6 +13,7 @@ public interface IFilmService {
 	List<FilmModel> findByTrending();
 	List<FilmModel> findByPopular();
 	List<FilmModel> findByRate();
+	List<FilmModel> findByRecentlyAdd();
 	void createNewFilm(FilmModel filmModel);
 	void editFilm(FilmModel filmModel);
 	int getTotalItem();

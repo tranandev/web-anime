@@ -78,5 +78,11 @@ public class FilmService implements IFilmService {
 		filmDAO.delete(id);
 	}
 
+	@Override
+	public List<FilmModel> findByRecentlyAdd() {
+		// TODO Auto-generated method stub
+		return filmDAO.findByRecentlyAdd();
+	}
+
 
 }
