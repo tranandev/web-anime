@@ -19,10 +19,10 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 	}
 
 	@Override
-	public void createNewUser(String userName, String password, String fullName, String photo, Timestamp createdDate) {
+	public void createNewUser(String userName, String password, String email, Timestamp createdDate) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO user(username, password, fullname, photo, status, roleid, createddate) VALUES(?, ?, ?, ?, 1, 1, ?)";
-		update(sql, userName, password, fullName, photo, createdDate);
+		String sql = "INSERT INTO user(username, password, email, status, roleid, createddate) VALUES(?, ?, ?, 1, 1, ?)";
+		update(sql, userName, password, email, createdDate);
 	}
 
 	@Override

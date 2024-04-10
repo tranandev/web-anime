@@ -29,12 +29,12 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void createNewUser(String userName, String password, String fullName, String photo) {
+	public void createNewUser(String userName, String password, String email) {
 		// TODO Auto-generated method stub
 		try {
 			String hashed = hashPassword(password);
 			Timestamp createdDate = new Timestamp(System.currentTimeMillis());
-			userDAO.createNewUser(userName, hashed, fullName, photo, createdDate);
+			userDAO.createNewUser(userName, hashed, email, createdDate);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

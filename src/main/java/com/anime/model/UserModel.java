@@ -4,6 +4,7 @@ public class UserModel extends AbstractModel<UserModel> {
 	
 	private String userName;
 	private String fullName;
+	private String email;
 	private String password;
 	private String repassword;
 	private Integer status;
@@ -52,5 +53,12 @@ public class UserModel extends AbstractModel<UserModel> {
 	public void setRole(RoleModel role) {
 		this.role = role;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	
 }

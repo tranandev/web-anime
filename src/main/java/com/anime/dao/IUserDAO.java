@@ -8,7 +8,7 @@ import com.anime.model.UserModel;
 public interface IUserDAO extends GenericDAO<UserModel> {
 	
 	UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status);
-	void createNewUser(String userName, String password, String fullName, String photo, Timestamp createdDate);
+	void createNewUser(String userName, String password, String email, Timestamp createdDate);
 	boolean  findByUserName(String userName);
 	List<UserModel> findAll();
 	UserModel findById(String id);
