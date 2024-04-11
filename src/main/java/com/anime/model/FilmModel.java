@@ -6,6 +6,10 @@ public class FilmModel extends AbstractModel{
 	private Integer categoryId;
 	private String categoryName;
 	private String file;
+	private String shortdescription;
+	private String type;
+	private String studio;
+	private String duration;
 	private Integer view;
 	private Integer episode;
 	private Integer currentEpisode;
@@ -29,13 +33,41 @@ public class FilmModel extends AbstractModel{
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
-	
-	
 	public String getCategoryName() {
 		return categoryName;
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	public String getShortdescription() {
+		return shortdescription;
+	}
+	public void setShortdescription(String shortdescription) {
+		this.shortdescription = shortdescription;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getStudio() {
+		return studio;
+	}
+	public void setStudio(String studio) {
+		this.studio = studio;
+	}
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 	public Integer getView() {
 		return view;
@@ -102,12 +134,6 @@ public class FilmModel extends AbstractModel{
 	}
 	public void setSortBy(String sortBy) {
 		this.sortBy = sortBy;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
 	}
 	
 	

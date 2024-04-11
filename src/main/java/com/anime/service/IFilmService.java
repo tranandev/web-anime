@@ -2,6 +2,7 @@ package com.anime.service;
 
 import java.util.List;
 
+import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 
@@ -18,4 +19,5 @@ public interface IFilmService {
 	void editFilm(FilmModel filmModel);
 	int getTotalItem();
 	void delete(String id);
+	List<CommentModel> findCommentByFilmId(String id);
 }

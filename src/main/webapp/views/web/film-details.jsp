@@ -32,15 +32,15 @@
             <div class="anime__details__content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg">
+                        <div class="anime__details__pic set-bg" data-setbg="images/film/${film.photo}">
                             <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                            <div class="view"><i class="fa fa-eye"></i> ${film.view}</div>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="anime__details__text">
                             <div class="anime__details__title">
-                                <h3>Fate Stay Night: Unlimited Blade</h3>
+                                <h3>${film.title}</h3>
                                 <span>ãã§ã¤ãï¼ã¹ãã¤ãã¤ã, Feitoï¼sutei naito</span>
                             </div>
                             <div class="anime__details__rating">
@@ -71,10 +71,10 @@
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
                                             <li><span>Scores:</span> 7.31 / 1,515</li>
-                                            <li><span>Rating:</span> 8.5 / 161 times</li>
+                                            <li><span>Rating:</span> ${film.rate}</li>
                                             <li><span>Duration:</span> 24 min/ep</li>
                                             <li><span>Quality:</span> HD</li>
-                                            <li><span>Views:</span> 131,541</li>
+                                            <li><span>Views:</span> ${film.view}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -94,72 +94,32 @@
                             <div class="section-title">
                                 <h5>Reviews</h5>
                             </div>
+                            <c:forEach var = "item" items = "${comment}">
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
                                     <img src="img/anime/review-1.jpg" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
+                                    <h6>${item.fullName} - <span>1 Hour ago</span></h6>
+                                    <p>${item.content}</p>
                                 </div>
                             </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-2.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-3.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-4.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-5.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-6.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
-                            </div>
+                            </c:forEach>
+                        
                         </div>
+                         <c:if test="${not empty USERMODEL}">
                         <div class="anime__details__form">
                             <div class="section-title">
                                 <h5>Your Comment</h5>
                             </div>
-                            <form action="#">
-                                <textarea placeholder="Your Comment"></textarea>
+                            <form action="<c:url value = '/xem-phim?type=newComment'/>" method="post">
+                                <textarea id = "content" name = "content" placeholder="Your Comment"></textarea>
+                                 <input type="hidden" id="userid" name="userId" value = "${USERMODEL.id}">
+                                 <input type="hidden" id="filmid" name="filmId" value = "${film.id}">
                                 <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                             </form>
                         </div>
+                        </c:if>
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <div class="anime__details__sidebar">

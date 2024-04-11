@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 import com.anime.dao.IFilmDAO;
+import com.anime.mapper.CommentMapper;
 import com.anime.mapper.FilmMapper;
+import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 
@@ -109,6 +111,16 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 		// TODO Auto-generated method stub
 		String sql = "DELETE FROM film WHERE id = ?";
 		update(sql, id);
+	}
+
+	@Override
+	public List<CommentModel> findCommentByFilmId(String id) {
+		// TODO Auto-generated method stub
+		
+		StringBuilder sql = new StringBuilder("SELECT content, fullname, photo FROM comment AS c");
+		sql.append(" INNER JOIN user AS u ON u.id = c.user_id");
+		sql.append(" WHERE c.film_id = ?");
+		return query(sql.toString(), new CommentMapper(), id);
 	}
 
 

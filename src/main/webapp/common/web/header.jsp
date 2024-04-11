@@ -14,7 +14,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
@@ -35,10 +35,16 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-lg-2">               
+                <div class="col-lg-3">              
                       <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                        <c:if test="${empty USERMODEL}">
                         <a href="<c:url value = '/dang-nhap?action=login'/>"><span class="icon_profile"></span></a>
+                        </c:if>
+                        <c:if test="${not empty USERMODEL}">
+                        <a href="#">Wellcome, ${USERMODEL.fullName}</a>
+                        <a href="<c:url value = '/profile'/>"><span class="icon_profile"></span></a>
+                        </c:if>
                     </div>
                 </div>
             </div>

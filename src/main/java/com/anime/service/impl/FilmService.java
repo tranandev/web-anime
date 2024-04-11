@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.anime.dao.IFilmDAO;
+import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 import com.anime.service.IFilmService;
@@ -43,7 +44,6 @@ public class FilmService implements IFilmService {
 	@Override
 	public void createNewFilm(FilmModel film) {
 		film.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-
 		filmDAO.createNewFilm(film.getTitle(), film.getCategoryId(), film.getPhoto(), film.getEpisode(), film.getCurrentEpisode(), film.getCreatedDate());
 	}
 
@@ -82,6 +82,12 @@ public class FilmService implements IFilmService {
 	public List<FilmModel> findByRecentlyAdd() {
 		// TODO Auto-generated method stub
 		return filmDAO.findByRecentlyAdd();
+	}
+
+	@Override
+	public List<CommentModel> findCommentByFilmId(String id) {
+		// TODO Auto-generated method stub
+		return filmDAO.findCommentByFilmId(id);
 	}
 
 

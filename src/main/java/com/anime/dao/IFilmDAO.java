@@ -3,6 +3,7 @@ package com.anime.dao;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 
@@ -19,4 +20,5 @@ public interface IFilmDAO extends GenericDAO<FilmModel>{
 	void editFilm(Long id, String title, Integer categoryId, String photo, Integer episode, Integer currentEpisode, Timestamp modifieddate);
 	int getTotalItem();
 	void delete(String id);
+	List<CommentModel> findCommentByFilmId(String id);
 }
