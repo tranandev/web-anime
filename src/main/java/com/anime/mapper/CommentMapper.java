@@ -14,6 +14,12 @@ public class CommentMapper implements RowMapper<CommentModel> {
 			comment.setContent(resultSet.getString("content"));
 			comment.setFullName(resultSet.getString("fullname"));
 			comment.setPhoto(resultSet.getString("photo"));
+			comment.setCreatedDate(resultSet.getTimestamp("createddate"));
+			try {
+				comment.setTitle(resultSet.getString("title"));
+			} catch (Exception e) {
+				System.out.print(e.getMessage());
+			}
 			return comment;
 		} catch (SQLException e) {
 			return null;

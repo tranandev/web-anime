@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.anime.model.UserModel;
+import com.anime.service.ICommentService;
 import com.anime.service.IFilmService;
 import com.anime.service.IUserService;
-import com.anime.service.impl.FilmService;
 import com.anime.utils.FormUtil;
 import com.anime.utils.SessionUtil;
 
@@ -26,6 +26,9 @@ public class HomeController extends HttpServlet {
 	
 	@Inject
 	IFilmService filmService;
+	
+	@Inject
+	ICommentService commentService;
 	private static final long serialVersionUID = 1L;
 	
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
@@ -50,6 +53,7 @@ public class HomeController extends HttpServlet {
 			
 			request.setAttribute("film", filmService.findByPopular());
 			request.setAttribute("film2", filmService.findByRecentlyAdd());
+			request.setAttribute("new2", commentService.findByNewComment());
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
 			rd.forward(request, response);
 		}

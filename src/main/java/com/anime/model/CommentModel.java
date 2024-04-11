@@ -1,11 +1,15 @@
 package com.anime.model;
 
+import java.sql.Timestamp;
+
 public class CommentModel extends AbstractModel{
 
 	private String content;
 	private String fullName;
+	private String title;
 	private Long userId;
 	private Long filmId;
+	private Timestamp minutesAgo;
 	public String getContent() {
 		return content;
 	}
@@ -29,6 +33,18 @@ public class CommentModel extends AbstractModel{
 	}
 	public void setFilmId(Long filmId) {
 		this.filmId = filmId;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public Timestamp getMinutesAgo() {
+		return minutesAgo;
+	}
+	public void setMinutesAgo(Timestamp minutesAgo) {
+		this.minutesAgo = minutesAgo;
 	}
 	
 	

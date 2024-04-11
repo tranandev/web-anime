@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -99,7 +100,8 @@
 												<li>${item.categoryName}</li>
 											</ul>
 											<h5>
-												<a href="<c:url value = '/xem-phim?type=details&id=${item.id}'/>">${item.title}</a>
+												<a
+													href="<c:url value = '/xem-phim?type=details&id=${item.id}'/>">${item.title}</a>
 											</h5>
 										</div>
 									</div>
@@ -254,123 +256,42 @@
 								<li data-filter=".years">Years</li>
 							</ul>
 							<div class="filter__gallery">
+							<c:forEach var="item" items="${film}" varStatus="status">
+							<c:if test="${status.index < 4}">
 								<div class="product__sidebar__view__item set-bg mix day years"
 									data-setbg="img/sidebar/tv-1.jpg">
-									<div class="ep">18 / ?</div>
+									<div class="ep">${item.currentEpisode}/${item.episode}</div>
 									<div class="view">
-										<i class="fa fa-eye"></i> 9141
+										<i class="fa fa-eye"></i> ${item.view}
 									</div>
 									<h5>
-										<a href="#">Boruto: Naruto next generations</a>
+										<a href="#">${item.title}</a>
 									</h5>
 								</div>
-								<div class="product__sidebar__view__item set-bg mix month week"
-									data-setbg="img/sidebar/tv-2.jpg">
-									<div class="ep">18 / ?</div>
-									<div class="view">
-										<i class="fa fa-eye"></i> 9141
-									</div>
-									<h5>
-										<a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
-									</h5>
-								</div>
-								<div class="product__sidebar__view__item set-bg mix week years"
-									data-setbg="img/sidebar/tv-3.jpg">
-									<div class="ep">18 / ?</div>
-									<div class="view">
-										<i class="fa fa-eye"></i> 9141
-									</div>
-									<h5>
-										<a href="#">Sword art online alicization war of underworld</a>
-									</h5>
-								</div>
-								<div class="product__sidebar__view__item set-bg mix years month"
-									data-setbg="img/sidebar/tv-4.jpg">
-									<div class="ep">18 / ?</div>
-									<div class="view">
-										<i class="fa fa-eye"></i> 9141
-									</div>
-									<h5>
-										<a href="#">Fate/stay night: Heaven's Feel I. presage
-											flower</a>
-									</h5>
-								</div>
-								<div class="product__sidebar__view__item set-bg mix day"
-									data-setbg="img/sidebar/tv-5.jpg">
-									<div class="ep">18 / ?</div>
-									<div class="view">
-										<i class="fa fa-eye"></i> 9141
-									</div>
-									<h5>
-										<a href="#">Fate stay night unlimited blade works</a>
-									</h5>
-								</div>
+								</c:if>
+								</c:forEach>
 							</div>
 						</div>
 						<div class="product__sidebar__comment">
 							<div class="section-title">
 								<h5>New Comment</h5>
 							</div>
-							<div class="product__sidebar__comment__item">
-								<div class="product__sidebar__comment__item__pic">
-									<img src="img/sidebar/comment-1.jpg" alt="">
+							<c:forEach var="item" items="${new2}">
+								<div class="product__sidebar__comment__item">
+									<div class="product__sidebar__comment__item__pic">
+										<img src="img/sidebar/comment-1.jpg" alt="">
+									</div>
+									<div class="product__sidebar__comment__item__text">
+										<ul>
+											<li>Active</li>
+											<li>Movie</li>
+										</ul>
+										<h5> <a href="#">${item.title}</a> </h5>
+										<h5> ${item.fullName} - ${item.createdDate} </h5>
+										<span><i class="fa fa-comment"></i> ${item.content}</span>
+									</div>
 								</div>
-								<div class="product__sidebar__comment__item__text">
-									<ul>
-										<li>Active</li>
-										<li>Movie</li>
-									</ul>
-									<h5>
-										<a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
-									</h5>
-									<span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-								</div>
-							</div>
-							<div class="product__sidebar__comment__item">
-								<div class="product__sidebar__comment__item__pic">
-									<img src="img/sidebar/comment-2.jpg" alt="">
-								</div>
-								<div class="product__sidebar__comment__item__text">
-									<ul>
-										<li>Active</li>
-										<li>Movie</li>
-									</ul>
-									<h5>
-										<a href="#">Shirogane Tamashii hen Kouhan sen</a>
-									</h5>
-									<span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-								</div>
-							</div>
-							<div class="product__sidebar__comment__item">
-								<div class="product__sidebar__comment__item__pic">
-									<img src="img/sidebar/comment-3.jpg" alt="">
-								</div>
-								<div class="product__sidebar__comment__item__text">
-									<ul>
-										<li>Active</li>
-										<li>Movie</li>
-									</ul>
-									<h5>
-										<a href="#">Kizumonogatari III: Reiket su-hen</a>
-									</h5>
-									<span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-								</div>
-							</div>
-							<div class="product__sidebar__comment__item">
-								<div class="product__sidebar__comment__item__pic">
-									<img src="img/sidebar/comment-4.jpg" alt="">
-								</div>
-								<div class="product__sidebar__comment__item__text">
-									<ul>
-										<li>Active</li>
-										<li>Movie</li>
-									</ul>
-									<h5>
-										<a href="#">Monogatari Series: Second Season</a>
-									</h5>
-									<span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
