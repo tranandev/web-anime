@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-   
+ 
 </head>
 
 <body>
@@ -32,7 +34,7 @@
                 <div class="col-lg-12">
                     <div class="anime__video__player">
                         <video id="player" playsinline controls data-poster="./videos/anime-watch.jpg">
-                            <source src="videos/1.mp4" type="video/mp4" />
+                            <source src="file/${film.file}" type="video/mp4" />
                             <!-- Captions are optional -->
                             <track kind="captions" label="English captions" src="#" srclang="en" default />
                         </video>

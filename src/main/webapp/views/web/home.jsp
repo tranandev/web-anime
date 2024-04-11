@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -100,7 +99,7 @@
 												<li>${item.categoryName}</li>
 											</ul>
 											<h5>
-												<a href="#">${item.title}</a>
+												<a href="<c:url value = '/xem-phim?type=details&id=${item.id}'/>">${item.title}</a>
 											</h5>
 										</div>
 									</div>

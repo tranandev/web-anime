@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="<c:url value='/template/css/owl.carousel.min.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/template/css/slicknav.min.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/template/css/style.css'/>" type="text/css">
+<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
 </head>
 <body>
 	<!-- Navigation -->

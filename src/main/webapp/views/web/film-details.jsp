@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -38,7 +41,7 @@
                         <div class="anime__details__text">
                             <div class="anime__details__title">
                                 <h3>Fate Stay Night: Unlimited Blade</h3>
-                                <span>フェイト／ステイナイト, Feito／sutei naito</span>
+                                <span>ãã§ã¤ãï¼ã¹ãã¤ãã¤ã, Feitoï¼sutei naito</span>
                             </div>
                             <div class="anime__details__rating">
                                 <div class="rating">
@@ -50,9 +53,9 @@
                                 </div>
                                 <span>1.029 Votes</span>
                             </div>
-                            <p>Every human inhabiting the world of Alcia is branded by a “Count” or a number written on
-                                their body. For Hina’s mother, her total drops to 0 and she’s pulled into the Abyss,
-                                never to be seen again. But her mother’s last words send Hina on a quest to find a
+                            <p>Every human inhabiting the world of Alcia is branded by a âCountâ or a number written on
+                                their body. For Hinaâs mother, her total drops to 0 and sheâs pulled into the Abyss,
+                                never to be seen again. But her motherâs last words send Hina on a quest to find a
                             legendary hero from the Waste War - the fabled Ace!</p>
                             <div class="anime__details__widget">
                                 <div class="row">
@@ -78,7 +81,7 @@
                             </div>
                             <div class="anime__details__btn">
                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                                <a href="#" class="watch-btn"><span>Watch Now</span> <i
+                                <a href="<c:url value = '/xem-phim?type=watch&id=${film.id}'/>" class="watch-btn"><span>Watch Now</span> <i
                                     class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
