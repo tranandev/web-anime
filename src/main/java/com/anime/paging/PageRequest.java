@@ -3,11 +3,11 @@ package com.anime.paging;
 import com.anime.sort.Sorter;
 
 public class PageRequest implements Pageble {
-	
+
 	private Integer page;
 	private Integer maxPageItem;
 	private Sorter sorter;
-	
+
 	public PageRequest(Integer page, Integer maxPageItem, Sorter sorter) {
 		this.page = page;
 		this.maxPageItem = maxPageItem;

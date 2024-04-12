@@ -7,7 +7,7 @@ import com.anime.dao.ICommentDAO;
 import com.anime.mapper.CommentMapper;
 import com.anime.model.CommentModel;
 
-public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO{
+public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO {
 
 	@Override
 	public void createNewComment(String content, Long userid, Long filmid, Timestamp createdDate) {
@@ -19,7 +19,8 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
 	@Override
 	public List<CommentModel> findByNewComment() {
 		// TODO Auto-generated method stub
-		StringBuilder sql = new StringBuilder("SELECT c.content, f.title, u.fullname, f.photo, c.createddate FROM comment AS c");
+		StringBuilder sql = new StringBuilder(
+				"SELECT c.content, f.title, u.fullname, f.photo, c.createddate FROM comment AS c");
 		sql.append(" INNER JOIN user AS u ON u.id = c.user_id");
 		sql.append(" INNER JOIN film AS f ON f.id = c.film_id");
 		sql.append(" ORDER BY c.createddate DESC LIMIT 4");

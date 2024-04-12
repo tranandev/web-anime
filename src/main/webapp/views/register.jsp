@@ -5,11 +5,10 @@
 <html>
 
 <head>
-  
 </head>
 
 <body>
-  
+
     <!-- Normal Breadcrumb Begin -->
     <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
         <div class="container">
@@ -33,25 +32,26 @@
                     <div class="login__form">
                         <h3>Sign Up</h3>
                         <c:if test="${not empty message}">
-							<div class="alert alert-${alert}">${message}</div>
-						</c:if>
+                            <div class="alert alert-${alert}">${message}</div>
+                        </c:if>
                         <form action="<c:url value='/dang-ki'/>" id="formRegister" method="post">
                             <div class="input__item">
                                 <input type="text" id="userName" name="userName" placeholder="Tên đăng nhập">
                                 <span class="icon_profile"></span>
                             </div>
-                            
+
                             <div class="input__item">
                                 <input type="email" id="email" name="email" placeholder="Email">
                                 <span class="icon_mail"></span>
                             </div>
-                            
+
                             <div class="input__item">
                                 <input type="password" id="password" name="password" placeholder="Mật khẩu">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" id="repassword" name="repassword" placeholder="Nhập lại mật khẩu">
+                                <input type="password" id="repassword" name="repassword"
+                                    placeholder="Nhập lại mật khẩu">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">Đăng kí</button>

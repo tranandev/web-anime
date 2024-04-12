@@ -23,14 +23,14 @@ public class HomeController extends HttpServlet {
 
 	@Inject
 	IUserService userService;
-	
+
 	@Inject
 	IFilmService filmService;
-	
+
 	@Inject
 	ICommentService commentService;
 	private static final long serialVersionUID = 1L;
-	
+
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -48,9 +48,9 @@ public class HomeController extends HttpServlet {
 			rd.forward(request, response);
 		} else if (action != null && action.equals("logout")) {
 			SessionUtil.getInstance().removeValue(request, "USERMODEL");
-			response.sendRedirect(request.getContextPath()+"/trang-chu");
+			response.sendRedirect(request.getContextPath() + "/trang-chu");
 		} else {
-			
+
 			request.setAttribute("film", filmService.findByPopular());
 			request.setAttribute("film2", filmService.findByRecentlyAdd());
 			request.setAttribute("new2", commentService.findByNewComment());
@@ -69,13 +69,14 @@ public class HomeController extends HttpServlet {
 			if (model != null) {
 				SessionUtil.getInstance().putValue(request, "USERMODEL", model);
 				if (model.getRole().getCode().equals("USER")) {
-					response.sendRedirect(request.getContextPath()+"/trang-chu");
+					response.sendRedirect(request.getContextPath() + "/trang-chu");
 				} else if (model.getRole().getCode().equals("ADMIN")) {
-					response.sendRedirect(request.getContextPath()+"/admin-home");
+					response.sendRedirect(request.getContextPath() + "/admin-home");
 				}
 			} else {
-				response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=username_password_invalid&alert=danger");
+				response.sendRedirect(request.getContextPath()
+						+ "/dang-nhap?action=login&message=username_password_invalid&alert=danger");
 			}
+		}
 	}
-}
 }

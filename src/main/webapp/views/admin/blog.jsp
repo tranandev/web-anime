@@ -23,7 +23,7 @@
 		</c:if>
 
 		<div class="main-content">
-			<form action="<c:url value='/admin-new'/>" id="formSubmit" method="get">
+			<form action="<c:url value='/admin-blog'/>" id="formSubmit" method="get">
 				<table border="1px solid black">
 					<tr>
 						<th>Tên Anime</th>

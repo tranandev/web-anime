@@ -10,12 +10,11 @@ import com.anime.dao.IUserDAO;
 import com.anime.model.UserModel;
 import com.anime.service.IUserService;
 
-
 public class UserService implements IUserService {
 
 	@Inject
 	private IUserDAO userDAO;
-	
+
 	@Override
 	public UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status) {
 		try {
@@ -40,14 +39,14 @@ public class UserService implements IUserService {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public boolean findByUserName(String userName) {
 		// TODO Auto-generated method stub
 		return userDAO.findByUserName(userName);
 
 	}
-	
+
 	@Override
 	public List<UserModel> findAll() {
 		// TODO Auto-generated method stub
@@ -60,7 +59,6 @@ public class UserService implements IUserService {
 		return userDAO.findById(id);
 	}
 
-	
 	private String hashPassword(String password) throws Exception {
 		String SALT = "my_salt_value"; // SALT value for additional security
 		try {

@@ -44,7 +44,8 @@ public class FilmService implements IFilmService {
 	@Override
 	public void createNewFilm(FilmModel film) {
 		film.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-		filmDAO.createNewFilm(film.getTitle(), film.getCategoryId(), film.getPhoto(), film.getEpisode(), film.getCurrentEpisode(), film.getCreatedDate());
+		filmDAO.createNewFilm(film.getTitle(), film.getCategoryId(), film.getPhoto(), film.getEpisode(),
+				film.getCurrentEpisode(), film.getCreatedDate());
 	}
 
 	@Override
@@ -57,7 +58,8 @@ public class FilmService implements IFilmService {
 	public void editFilm(FilmModel film) {
 		// TODO Auto-generated method stub
 		film.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-		filmDAO.editFilm(film.getId(), film.getTitle(), film.getCategoryId(), film.getPhoto(), film.getEpisode(), film.getCurrentEpisode(), film.getModifiedDate());
+		filmDAO.editFilm(film.getId(), film.getTitle(), film.getCategoryId(), film.getPhoto(), film.getEpisode(),
+				film.getCurrentEpisode(), film.getModifiedDate());
 	}
 
 	@Override
@@ -89,6 +91,5 @@ public class FilmService implements IFilmService {
 		// TODO Auto-generated method stub
 		return filmDAO.findCommentByFilmId(id);
 	}
-
 
 }

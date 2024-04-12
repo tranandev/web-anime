@@ -28,6 +28,6 @@ public class UserMapper implements RowMapper<UserModel> {
 			return user;
 		} catch (SQLException e) {
 			return null;
-		}	
+		}
 	}
 }

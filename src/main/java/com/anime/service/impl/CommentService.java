@@ -9,8 +9,8 @@ import com.anime.dao.ICommentDAO;
 import com.anime.model.CommentModel;
 import com.anime.service.ICommentService;
 
-public class CommentService implements ICommentService{
-	
+public class CommentService implements ICommentService {
+
 	@Inject
 	ICommentDAO commentDAO;
 
@@ -18,7 +18,8 @@ public class CommentService implements ICommentService{
 	public void createNewComment(CommentModel newComment) {
 		// TODO Auto-generated method stub
 		newComment.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-		commentDAO.createNewComment(newComment.getContent(), newComment.getUserId(), newComment.getFilmId(), newComment.getCreatedDate());
+		commentDAO.createNewComment(newComment.getContent(), newComment.getUserId(), newComment.getFilmId(),
+				newComment.getCreatedDate());
 	}
 
 	@Override

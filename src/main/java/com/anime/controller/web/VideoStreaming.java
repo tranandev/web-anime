@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = { "/streamvideo" })
 public class VideoStreaming extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		String videoPath = getServletContext().getRealPath("/videos/2.mp4");
+        String videoPath = getServletContext().getRealPath("/videos/2.mp4");
         File videoFile = new File(videoPath);
         FileInputStream fis = null;
         ServletOutputStream sos = null;
@@ -49,11 +49,9 @@ public class VideoStreaming extends HttpServlet {
             }
         }
     }
-	
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-
-}
+    }
 }

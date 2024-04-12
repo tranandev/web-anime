@@ -16,7 +16,7 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 
 	@Override
 	public List<FilmModel> findAll(Pageble pageble) {
-	
+
 		StringBuilder sql = new StringBuilder("SELECT * FROM film");
 		if (pageble.getSorter() != null && StringUtils.isNotBlank(pageble.getSorter().getSortName())
 				&& StringUtils.isNotBlank(pageble.getSorter().getSortBy())) {
@@ -43,11 +43,11 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 		List<FilmModel> films = query(sql.toString(), new FilmMapper());
 		return films;
 	}
-	
+
 	@Override
 	public List<FilmModel> findByRecentlyAdd() {
 		// TODO Auto-generated method stub
-		
+
 		StringBuilder sql = new StringBuilder("SELECT * FROM film AS f");
 		sql.append(" INNER JOIN category AS c ON f.id = c.id");
 		sql.append(" ORDER BY f.createddate DESC LIMIT 6");
@@ -80,7 +80,8 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 	}
 
 	@Override
-	public void editFilm(Long id, String title, Integer categoryId, String photo, Integer episode, Integer currentEpisode, Timestamp modifiedDate) {
+	public void editFilm(Long id, String title, Integer categoryId, String photo, Integer episode,
+			Integer currentEpisode, Timestamp modifiedDate) {
 		// TODO Auto-generated method stub
 
 		StringBuilder sql = new StringBuilder("UPDATE film");
@@ -92,11 +93,11 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 	@Override
 	public List<FilmModel> findAll() {
 		// TODO Auto-generated method stub
-		
-		  String sql = "SELECT * FROM film";
-		  List<FilmModel> films = query(sql, new FilmMapper());
-		  return films;
-		 
+
+		String sql = "SELECT * FROM film";
+		List<FilmModel> films = query(sql, new FilmMapper());
+		return films;
+
 	}
 
 	@Override
@@ -116,14 +117,11 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 	@Override
 	public List<CommentModel> findCommentByFilmId(String id) {
 		// TODO Auto-generated method stub
-		
+
 		StringBuilder sql = new StringBuilder("SELECT content, fullname, photo FROM comment AS c");
 		sql.append(" INNER JOIN user AS u ON u.id = c.user_id");
 		sql.append(" WHERE c.film_id = ?");
 		return query(sql.toString(), new CommentMapper(), id);
 	}
-
-
-
 
 }

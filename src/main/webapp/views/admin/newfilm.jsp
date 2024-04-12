@@ -3,9 +3,11 @@
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 
 </head>
+
 <body>
 	<div class="container">
 		<h1>Chào mừng đến với trang New Film</h1>
@@ -13,10 +15,10 @@
 		<c:if test="${not empty USERMODEL}">
 			<li class="nav-item"><a class="nav-link" href='#'>Wellcome,
 					${USERMODEL.fullName}</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href='<c:url value="/thoat?action=logout"/>'>Thoát</a></li>
+			<li class="nav-item"><a class="nav-link" href='<c:url value="/thoat?action=logout"/>'>Thoát</a></li>
 		</c:if>
-		<form action="<c:url value='/admin-new?type=newfilm'/>" id="formNew" method="post" enctype="multipart/form-data">
+		<form action="<c:url value='/admin-new?type=newfilm'/>" id="formNew" method="post"
+			enctype="multipart/form-data">
 
 			<div class="form-group">
 				<input type="text" class="form-control" id="title" name="title" placeholder="Tên Film">
@@ -30,8 +32,8 @@
 					</c:forEach>
 				</select>
 			</div>
-			
-				<div class="form-group">
+
+			<div class="form-group">
 				<input type="file" class="form-control" id="photo" name="photo" placeholder="Ảnh">
 			</div>
 
@@ -40,7 +42,8 @@
 			</div>
 
 			<div class="form-group">
-				<input type="text" class="form-control" id="currentEpisode" name="currentEpisode" placeholder="Số tập hiện tại">
+				<input type="text" class="form-control" id="currentEpisode" name="currentEpisode"
+					placeholder="Số tập hiện tại">
 			</div>
 
 			<!-- <input type="hidden" value="newfilm" name="type" /> -->
@@ -50,5 +53,5 @@
 	</div>
 
 </body>
-</html>
 
+</html>

@@ -6,7 +6,7 @@ import com.anime.dao.ICategoryDAO;
 import com.anime.mapper.CategoryMapper;
 import com.anime.model.CategoryModel;
 
-public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategoryDAO{
+public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategoryDAO {
 
 	@Override
 	public List<CategoryModel> findAll() {

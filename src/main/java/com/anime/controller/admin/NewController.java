@@ -34,27 +34,26 @@ public class NewController extends HttpServlet {
 	@Inject
 	private ICategoryService categoryService;
 
-	
 	private static final long serialVersionUID = 1L;
 	private static final String UPLOAD_DIRECTORY = "images/film";
 	private static final int THRESHOLD_SIZE = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
 	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
-	 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String type = request.getParameter("type");
 		if (type != null && type.equals("list")) {
 			FilmModel film1 = FormUtil.toModel(FilmModel.class, request);
-			
+
 			Pageble pageble = new PageRequest(film1.getPage(), film1.getMaxPageItem(),
 					new Sorter(film1.getSortName(), film1.getSortBy()));
-		
+
 			request.setAttribute("films", filmService.findAll(pageble));
 			FilmModel filmModel = new FilmModel();
 			filmModel.setTotalItem(filmService.getTotalItem());
-			filmModel.setTotalPage((int) Math.ceil((double) filmModel.getTotalItem() / film1.getMaxPageItem())) ;
+			filmModel.setTotalPage((int) Math.ceil((double) filmModel.getTotalItem() / film1.getMaxPageItem()));
 			filmModel.setPage(film1.getPage());
 			request.setAttribute("filmModel", filmModel);
 			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/list.jsp");
@@ -74,12 +73,14 @@ public class NewController extends HttpServlet {
 		} else if (type != null && type.equals("delete")) {
 			String id = request.getParameter("id");
 			filmService.delete(id);
-			response.sendRedirect(request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
+			response.sendRedirect(
+					request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
 		}
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String type = request.getParameter("type");
 		FilmModel f = new FilmModel();
 		if (type.equals("newfilm")) {
@@ -89,21 +90,23 @@ public class NewController extends HttpServlet {
 				writer.flush();
 				return;
 			}
-			
-		    photoUpload(request, f);
+
+			photoUpload(request, f);
 			filmService.createNewFilm(f);
-			response.sendRedirect(request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
+			response.sendRedirect(
+					request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
 		} else if (type.equals("edit")) {
-		
+
 			photoUpload(request, f);
 			filmService.editFilm(f);
-			response.sendRedirect(request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
+			response.sendRedirect(
+					request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
 		}
 
 	}
-	
-private void photoUpload(HttpServletRequest request, FilmModel f) {
-		
+
+	private void photoUpload(HttpServletRequest request, FilmModel f) {
+
 		// cấu hình upload
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(THRESHOLD_SIZE);
@@ -118,7 +121,7 @@ private void photoUpload(HttpServletRequest request, FilmModel f) {
 		if (!uploadDir.exists()) {
 			uploadDir.mkdir();
 		}
-		//khởi tạo biến pictureold trong trường hợp sửa dữ liệu
+		// khởi tạo biến pictureold trong trường hợp sửa dữ liệu
 		String oldPhoto = null;
 		try {
 			// phân tích request để lấy dữ liệu
@@ -144,10 +147,10 @@ private void photoUpload(HttpServletRequest request, FilmModel f) {
 						f.setPhoto(fileName);
 					}
 				} else {
-					
+
 					// lấy dữ liệu của trường trên form
 					String data = item.getString("UTF-8");
-					
+
 					if (item.getFieldName().equals("id")) {
 						f.setId(Long.parseLong(data));
 					} else if (item.getFieldName().equals("title")) {
@@ -162,13 +165,13 @@ private void photoUpload(HttpServletRequest request, FilmModel f) {
 						oldPhoto = data;
 					}
 				}
-				
+
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(f.getPhoto()==null) {
+		if (f.getPhoto() == null) {
 			f.setPhoto(oldPhoto);
 		}
 	}

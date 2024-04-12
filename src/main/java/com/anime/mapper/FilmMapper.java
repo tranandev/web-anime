@@ -24,11 +24,11 @@ public class FilmMapper implements RowMapper<FilmModel> {
 			film.setEpisode(resultSet.getInt("episode"));
 			film.setCurrentEpisode(resultSet.getInt("current_episode"));
 			film.setRate(resultSet.getInt("rate"));
-			 try {
-				 film.setCategoryName(resultSet.getString("name"));
-			 } catch (Exception e) {
-				 
-			 }
+			try {
+				film.setCategoryName(resultSet.getString("name"));
+			} catch (Exception e) {
+
+			}
 			return film;
 		} catch (SQLException e) {
 			return null;
