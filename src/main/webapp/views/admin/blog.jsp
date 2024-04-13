@@ -13,12 +13,12 @@
 
 <body>
 	<div class="container">
-		<h1>Chào mừng đến với trang Admin của chúng tôi!</h1>
+		<h1>Chào mừng đến với trang Admin Blog của chúng tôi!</h1>
 
 		<c:if test="${not empty USERMODEL}">
 			<li class="nav-item"><a class="nav-link" href='#'>Wellcome,
 					${USERMODEL.fullName}</a></li>
-			<li class="nav-item"><a class="nav-link" href='<c:url value="/admin-new?type=newfilm"/>'>Thêm Film</a></li>
+			<li class="nav-item"><a class="nav-link" href='<c:url value="/admin-blog?type=newblog"/>'>Thêm Film</a></li>
 			<li class="nav-item"><a class="nav-link" href='<c:url value="/thoat?action=logout"/>'>Thoát</a></li>
 		</c:if>
 
@@ -26,13 +26,9 @@
 			<form action="<c:url value='/admin-blog'/>" id="formSubmit" method="get">
 				<table border="1px solid black">
 					<tr>
-						<th>Tên Anime</th>
-						<th>Thể Loại</th>
-						<th>Ảnh</th>
-						<th>Lượt View</th>
-						<th>Sô Tập</th>
-						<th>Số Tập Hiện Tại</th>
-						<th>Đánh Giá</th>
+						<th>Tên Blog</th>
+						<th>Nội dung</th>
+						<th>Tác giả</th>
 					</tr>
 					<c:forEach var="item" items="${films}">
 						<tr>

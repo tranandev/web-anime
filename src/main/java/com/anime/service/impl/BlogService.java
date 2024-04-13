@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.anime.dao.IBlogDAO;
 import com.anime.model.BlogModel;
+import com.anime.paging.Pageble;
 import com.anime.service.IBlogService;
 
 public class BlogService implements IBlogService {
@@ -17,6 +18,12 @@ public class BlogService implements IBlogService {
 	public List<BlogModel> findAll() {
 		// TODO Auto-generated method stub
 		return blogDAO.findAll();
+	}
+
+	@Override
+	public List<BlogModel> findAll(Pageble pageble) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
