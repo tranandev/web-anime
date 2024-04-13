@@ -10,4 +10,10 @@ public interface IBlogService {
 	List<BlogModel> findAll();
 
 	List<BlogModel> findAll(Pageble pageble);
+
+	int getTotalItem();
+
+	BlogModel findOneById(String id);
+
+	void delete(String id);
 }

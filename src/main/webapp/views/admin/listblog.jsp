@@ -30,19 +30,15 @@
 						<th>Nội dung</th>
 						<th>Tác giả</th>
 					</tr>
-					<c:forEach var="item" items="${films}">
+					<c:forEach var="item" items="${blogs}">
 						<tr>
 							<td>${item.title}</td>
-							<td>${item.categoryName}</td>
-							<td><img src="images/film/${item.photo}" width="100" /></td>
-							<td>${item.view}</td>
-							<td>${item.episode}</td>
-							<td>${item.currentEpisode}</td>
-							<td>${item.rate}</td>
+							<td>${item.content}</td>
+							<td>${item.author}</td>
+							
+							<td><a href="<c:url value='/admin-blog?type=edit&id=${item.id}'/>">update</a>
 
-							<td><a href="<c:url value='/admin-new?type=edit&id=${item.id}'/>">update</a>
-
-								<a href="<c:url value='/admin-new?type=delete&id=${item.id}'/>">delete</a>
+								<a href="<c:url value='/admin-blog?type=delete&id=${item.id}'/>">delete</a>
 						</tr>
 					</c:forEach>
 
@@ -55,6 +51,7 @@
 						<input type="hidden" value="" id="maxPageItem" name="maxPageItem" />
 						<input type="hidden" value="" id="sortName" name="sortName" />
 						<input type="hidden" value="" id="sortBy" name="sortBy" />
+						<input type="hidden" value="" id="totalPage" name="totalPage" />
 					</nav>
 				</div>
 			</form>
@@ -62,8 +59,8 @@
 	</div>
 
 	<script type="text/javascript">
-		var totalPage = ${filmModel.totalPage};
-		var currentPage = ${filmModel.page};
+		var totalPage = ${pageModel.totalPage};
+		var currentPage = ${pageModel.page};
 		var limit = 5;
 		$(function () {
 			window.pagObj = $('#pagination').twbsPagination({
@@ -77,6 +74,7 @@
 						$('#page').val(page);
 						$('#sortName').val('title');
 						$('#sortBy').val('asc');
+						$('#totalPage').val(totalPage);
 						$('#formSubmit').submit();
 					}
 				}

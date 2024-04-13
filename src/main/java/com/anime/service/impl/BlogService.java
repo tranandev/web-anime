@@ -23,7 +23,25 @@ public class BlogService implements IBlogService {
 	@Override
 	public List<BlogModel> findAll(Pageble pageble) {
 		// TODO Auto-generated method stub
-		return null;
+		return blogDAO.findAll(pageble);
+	}
+
+	@Override
+	public int getTotalItem() {
+		// TODO Auto-generated method stub
+		return blogDAO.getTotalItem();
+	}
+
+	@Override
+	public BlogModel findOneById(String id) {
+		// TODO Auto-generated method stub
+		return blogDAO.findOneById(id);
+	}
+
+	@Override
+	public void delete(String id) {
+		// TODO Auto-generated method stub
+		blogDAO.delete(id);
 	}
 
 }

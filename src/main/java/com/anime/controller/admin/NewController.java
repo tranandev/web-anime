@@ -58,7 +58,7 @@ public class NewController extends HttpServlet {
 			}
 			
 			request.setAttribute("pageModel", page);
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/list.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listfilm.jsp");
 			rd.forward(request, response);
 		} else if (type != null && type.equals("newfilm")) {
 			request.setAttribute("category", categoryService.findAll());

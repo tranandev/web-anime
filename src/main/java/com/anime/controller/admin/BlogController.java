@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.anime.model.FilmModel;
+import com.anime.model.PageModel;
 import com.anime.paging.PageRequest;
 import com.anime.paging.Pageble;
 import com.anime.service.IBlogService;
@@ -27,40 +28,39 @@ public class BlogController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-/*
 		String type = request.getParameter("type");
 		if (type != null && type.equals("list")) {
-			FilmModel film1 = FormUtil.toModel(FilmModel.class, request);
+			PageModel page = FormUtil.toModel(PageModel.class, request);
 
-			Pageble pageble = new PageRequest(film1.getPage(), film1.getMaxPageItem(),
-					new Sorter(film1.getSortName(), film1.getSortBy()));
+			Pageble pageble = new PageRequest(page.getPage(), page.getMaxPageItem(),
+					new Sorter(page.getSortName(), page.getSortBy()));
 
-			request.setAttribute("films", blogService.findAll(pageble));
-			FilmModel filmModel = new FilmModel();
-			filmModel.setTotalItem(filmService.getTotalItem());
-			filmModel.setTotalPage((int) Math.ceil((double) filmModel.getTotalItem() / film1.getMaxPageItem()));
-			filmModel.setPage(film1.getPage());
-			request.setAttribute("filmModel", filmModel);
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/list.jsp");
+			request.setAttribute("blogs", blogService.findAll(pageble));
+			if(page.getPage() == 1) {	
+				page.setTotalItem(blogService.getTotalItem());
+				page.setTotalPage((int) Math.ceil((double) page.getTotalItem() / page.getMaxPageItem()));
+			}
+			
+			request.setAttribute("pageModel", page);
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listblog.jsp");
 			rd.forward(request, response);
-		} else if (type != null && type.equals("newfilm")) {
-			request.setAttribute("category", categoryService.findAll());
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/newfilm.jsp");
+		} else if (type != null && type.equals("newblog")) {
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/newblog.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("edit")) {
 			String id = request.getParameter("id");
-			request.setAttribute("category", categoryService.findAll());
-			request.setAttribute("film", filmService.findOneById(id));
+			request.setAttribute("blog", blogService.findOneById(id));
 			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/edit.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("delete")) {
 			String id = request.getParameter("id");
-			filmService.delete(id);
+			blogService.delete(id);
 			response.sendRedirect(
-					request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
-		} */
+					request.getContextPath() + "/admin-blog?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
+		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
