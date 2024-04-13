@@ -13,10 +13,10 @@ public class CommentMapper implements RowMapper<CommentModel> {
 			CommentModel comment = new CommentModel();
 			comment.setContent(resultSet.getString("content"));
 			comment.setFullName(resultSet.getString("fullname"));
-			comment.setPhoto(resultSet.getString("photo"));
-			comment.setCreatedDate(resultSet.getTimestamp("createddate"));
 			try {
+				comment.setPhoto(resultSet.getString("photo"));
 				comment.setTitle(resultSet.getString("title"));
+				comment.setCreatedDate(resultSet.getTimestamp("createddate"));
 			} catch (Exception e) {
 				System.out.print(e.getMessage());
 			}

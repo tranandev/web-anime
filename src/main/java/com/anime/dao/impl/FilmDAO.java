@@ -6,9 +6,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 import com.anime.dao.IFilmDAO;
-import com.anime.mapper.CommentMapper;
 import com.anime.mapper.FilmMapper;
-import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 

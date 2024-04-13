@@ -31,7 +31,7 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
 	public List<CommentModel> findCommentByFilmId(String id) {
 		// TODO Auto-generated method stub
 
-		StringBuilder sql = new StringBuilder("SELECT content, fullname, photo FROM comment AS c");
+		StringBuilder sql = new StringBuilder("SELECT content, fullname FROM comment AS c");
 		sql.append(" INNER JOIN user AS u ON u.id = c.user_id");
 		sql.append(" WHERE c.film_id = ?");
 		return query(sql.toString(), new CommentMapper(), id);

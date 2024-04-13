@@ -6,7 +6,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.anime.dao.IFilmDAO;
-import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 import com.anime.service.IFilmService;
