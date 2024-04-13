@@ -18,7 +18,7 @@
 		<c:if test="${not empty USERMODEL}">
 			<li class="nav-item"><a class="nav-link" href='#'>Wellcome,
 					${USERMODEL.fullName}</a></li>
-			<li class="nav-item"><a class="nav-link" href='<c:url value="/admin-blog?type=newblog"/>'>Thêm Film</a></li>
+			<li class="nav-item"><a class="nav-link" href='<c:url value="/admin-blog?type=newblog"/>'>Thêm Blog</a></li>
 			<li class="nav-item"><a class="nav-link" href='<c:url value="/thoat?action=logout"/>'>Thoát</a></li>
 		</c:if>
 

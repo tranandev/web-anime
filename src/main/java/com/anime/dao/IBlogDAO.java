@@ -1,5 +1,6 @@
 package com.anime.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.anime.model.BlogModel;
@@ -16,4 +17,8 @@ public interface IBlogDAO extends GenericDAO<BlogModel> {
 	BlogModel findOneById(String id);
 
 	void delete(String id);
+
+	void createNewFilm(String title, String content, String author, Timestamp createdDate);
+
+	void editFilm(Long id, String title, String content, String author, Timestamp modifiedDate);
 }

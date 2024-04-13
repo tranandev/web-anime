@@ -58,18 +58,18 @@ public class NewController extends HttpServlet {
 			}
 			
 			request.setAttribute("pageModel", page);
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listfilm.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/film/listfilm.jsp");
 			rd.forward(request, response);
 		} else if (type != null && type.equals("newfilm")) {
 			request.setAttribute("category", categoryService.findAll());
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/newfilm.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/film/newfilm.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("edit")) {
 			String id = request.getParameter("id");
 			request.setAttribute("category", categoryService.findAll());
 			request.setAttribute("film", filmService.findOneById(id));
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/edit.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/film/editfilm.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("delete")) {

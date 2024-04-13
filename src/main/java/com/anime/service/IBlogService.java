@@ -16,4 +16,10 @@ public interface IBlogService {
 	BlogModel findOneById(String id);
 
 	void delete(String id);
+
+	void createNewFilm(BlogModel blog);
+
+	void editFilm(BlogModel blog);
+	
+	
 }

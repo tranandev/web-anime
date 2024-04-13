@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.anime.model.FilmModel;
+import com.anime.model.BlogModel;
 import com.anime.model.PageModel;
 import com.anime.paging.PageRequest;
 import com.anime.paging.Pageble;
@@ -42,16 +42,16 @@ public class BlogController extends HttpServlet {
 			}
 			
 			request.setAttribute("pageModel", page);
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/listblog.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/blog/listblog.jsp");
 			rd.forward(request, response);
 		} else if (type != null && type.equals("newblog")) {
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/newblog.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/blog/newblog.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("edit")) {
 			String id = request.getParameter("id");
 			request.setAttribute("blog", blogService.findOneById(id));
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/edit.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/blog/editblog.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("delete")) {
@@ -65,7 +65,18 @@ public class BlogController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+        BlogModel blog = FormUtil.toModel(BlogModel.class, request);
 
+        String type = request.getParameter("type");
+ 	   	if (type.equals("newblog")) {
+ 		
+ 			blogService.createNewFilm(blog);
+ 			response.sendRedirect(request.getContextPath() + "/admin-blog?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
+ 		} else if (type.equals("edit")) {
+
+ 			blogService.editFilm(blog);
+ 			response.sendRedirect(request.getContextPath() + "/admin-blog?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
+ 		}
 	}
 
 }

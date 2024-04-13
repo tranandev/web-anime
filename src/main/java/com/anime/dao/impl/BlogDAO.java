@@ -1,5 +1,6 @@
 package com.anime.dao.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -53,6 +54,23 @@ public class BlogDAO extends AbstractDAO<BlogModel> implements IBlogDAO {
 		// TODO Auto-generated method stub
 		String sql = "DELETE FROM blog WHERE id = ?";
 		update(sql, id);
+	}
+
+	@Override
+	public void createNewFilm(String title, String content, String author, Timestamp createdDate) {
+		// TODO Auto-generated method stub
+		String sql = "INSERT INTO blog(title, content, author, createddate) VALUES(?, ?, ?, ?)";
+		update(sql, title, content, author, createdDate);
+	}
+
+	@Override
+	public void editFilm(Long id, String title, String content, String author, Timestamp modifiedDate) {
+		// TODO Auto-generated method stub
+
+		StringBuilder sql = new StringBuilder("UPDATE blog");
+		sql.append(" SET title = ?, content = ?, author = ?, modifieddate = ?");
+		sql.append(" WHERE id = ?");
+		update(sql.toString(), title, content, author, modifiedDate, id);
 	}
 
 }
