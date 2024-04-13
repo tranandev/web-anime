@@ -2,7 +2,6 @@ package com.anime.service;
 
 import java.util.List;
 
-import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 

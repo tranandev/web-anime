@@ -23,9 +23,9 @@ public interface IFilmDAO extends GenericDAO<FilmModel> {
 
 	List<FilmModel> findByRecentlyAdd();
 
-	void createNewFilm(String title, Integer categoryId, String photo, Integer episode, Integer currentEpisode, Timestamp createddate);
+	void createNewFilm(String title, Integer categoryId, String photo, Integer episode, Integer currentEpisode, Timestamp createdDate);
 
-	void editFilm(Long id, String title, Integer categoryId, String photo, Integer episode, Integer currentEpisode, Timestamp modifieddate);
+	void editFilm(Long id, String title, Integer categoryId, String photo, Integer episode, Integer currentEpisode, Timestamp modifiedDate);
 
 	int getTotalItem();
 

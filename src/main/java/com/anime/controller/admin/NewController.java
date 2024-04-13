@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.anime.model.FilmModel;
+import com.anime.model.PageModel;
 import com.anime.paging.PageRequest;
 import com.anime.paging.Pageble;
 import com.anime.service.ICategoryService;
@@ -45,29 +46,30 @@ public class NewController extends HttpServlet {
 
 		String type = request.getParameter("type");
 		if (type != null && type.equals("list")) {
-			FilmModel film1 = FormUtil.toModel(FilmModel.class, request);
+			PageModel page = FormUtil.toModel(PageModel.class, request);
 
-			Pageble pageble = new PageRequest(film1.getPage(), film1.getMaxPageItem(),
-					new Sorter(film1.getSortName(), film1.getSortBy()));
+			Pageble pageble = new PageRequest(page.getPage(), page.getMaxPageItem(),
+					new Sorter(page.getSortName(), page.getSortBy()));
 
 			request.setAttribute("films", filmService.findAll(pageble));
-			FilmModel filmModel = new FilmModel();
-			filmModel.setTotalItem(filmService.getTotalItem());
-			filmModel.setTotalPage((int) Math.ceil((double) filmModel.getTotalItem() / film1.getMaxPageItem()));
-			filmModel.setPage(film1.getPage());
-			request.setAttribute("filmModel", filmModel);
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/list.jsp");
+			if(page.getPage() == 1) {	
+				page.setTotalItem(filmService.getTotalItem());
+				page.setTotalPage((int) Math.ceil((double) page.getTotalItem() / page.getMaxPageItem()));
+			}
+			
+			request.setAttribute("pageModel", page);
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/film/listfilm.jsp");
 			rd.forward(request, response);
 		} else if (type != null && type.equals("newfilm")) {
 			request.setAttribute("category", categoryService.findAll());
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/newfilm.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/film/newfilm.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("edit")) {
 			String id = request.getParameter("id");
 			request.setAttribute("category", categoryService.findAll());
 			request.setAttribute("film", filmService.findOneById(id));
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/edit.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/film/editfilm.jsp");
 			rd.forward(request, response);
 
 		} else if (type != null && type.equals("delete")) {
@@ -82,7 +84,7 @@ public class NewController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String type = request.getParameter("type");
-		FilmModel f = new FilmModel();
+		FilmModel film = new FilmModel();
 		if (type.equals("newfilm")) {
 			if (!ServletFileUpload.isMultipartContent(request)) {
 				PrintWriter writer = response.getWriter();
@@ -91,21 +93,21 @@ public class NewController extends HttpServlet {
 				return;
 			}
 
-			photoUpload(request, f);
-			filmService.createNewFilm(f);
+			photoUpload(request, film);
+			filmService.createNewFilm(film);
 			response.sendRedirect(
 					request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
 		} else if (type.equals("edit")) {
 
-			photoUpload(request, f);
-			filmService.editFilm(f);
+			photoUpload(request, film);
+			filmService.editFilm(film);
 			response.sendRedirect(
 					request.getContextPath() + "/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc");
 		}
 
 	}
 
-	private void photoUpload(HttpServletRequest request, FilmModel f) {
+	private void photoUpload(HttpServletRequest request, FilmModel film) {
 
 		// cấu hình upload
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -127,13 +129,14 @@ public class NewController extends HttpServlet {
 			// phân tích request để lấy dữ liệu
 			List<FileItem> formItems = upload.parseRequest(request);
 			// lấy bộ lặp chứa các fileitem
+			@SuppressWarnings("rawtypes")
 			Iterator iter = formItems.iterator();
 			// lặp qua từng trường trên form
 			while (iter.hasNext()) {
 				FileItem item = (FileItem) iter.next();
 				// xử lý trường tệp tin
 				if (!item.isFormField()) {
-					f.setPhoto(null);
+					film.setPhoto(null);
 					if (item.getSize() > 0) {
 						// lấy tên file upload
 						String fileName = new File(item.getName()).getName();
@@ -144,7 +147,7 @@ public class NewController extends HttpServlet {
 						// lưu tệp tin upload
 						item.write(storeFile);
 						// set tên picture
-						f.setPhoto(fileName);
+						film.setPhoto(fileName);
 					}
 				} else {
 
@@ -152,15 +155,15 @@ public class NewController extends HttpServlet {
 					String data = item.getString("UTF-8");
 
 					if (item.getFieldName().equals("id")) {
-						f.setId(Long.parseLong(data));
+						film.setId(Long.parseLong(data));
 					} else if (item.getFieldName().equals("title")) {
-						f.setTitle(data);
+						film.setTitle(data);
 					} else if (item.getFieldName().equals("categoryId")) {
-						f.setCategoryId(Integer.parseInt(data));
+						film.setCategoryId(Integer.parseInt(data));
 					} else if (item.getFieldName().equals("episode")) {
-						f.setEpisode(Integer.parseInt(data));
+						film.setEpisode(Integer.parseInt(data));
 					} else if (item.getFieldName().equals("currentEpisode")) {
-						f.setCurrentEpisode(Integer.parseInt(data));
+						film.setCurrentEpisode(Integer.parseInt(data));
 					} else if (item.getFieldName().equals("oldPhoto")) {
 						oldPhoto = data;
 					}
@@ -171,8 +174,8 @@ public class NewController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (f.getPhoto() == null) {
-			f.setPhoto(oldPhoto);
+		if (film.getPhoto() == null) {
+			film.setPhoto(oldPhoto);
 		}
 	}
 

@@ -48,8 +48,8 @@
 				<input type="text" class="form-control" id="currentEpisode" name="currentEpisode"
 					value="${film.currentEpisode}">
 			</div>
-			<input type="hidden" value="${film.id}" name="id" /> <input type="hidden" value="${film.photo}"
-				id="oldPhoto" name="oldPhoto" />
+			<input type="hidden" value="${film.id}" name="id" />
+			<input type="hidden" value="${film.photo}" id="oldPhoto" name="oldPhoto" />
 			<button type="submit" class="btn btn-primary">Thêm</button>
 
 		</form>

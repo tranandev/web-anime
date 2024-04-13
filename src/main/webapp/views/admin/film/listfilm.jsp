@@ -59,6 +59,7 @@
 						<input type="hidden" value="" id="maxPageItem" name="maxPageItem" />
 						<input type="hidden" value="" id="sortName" name="sortName" />
 						<input type="hidden" value="" id="sortBy" name="sortBy" />
+						<input type="hidden" value="" id="totalPage" name="totalPage" />
 					</nav>
 				</div>
 			</form>
@@ -66,8 +67,8 @@
 	</div>
 
 	<script type="text/javascript">
-		var totalPage = ${filmModel.totalPage};
-		var currentPage = ${filmModel.page};
+		var totalPage = ${pageModel.totalPage};
+		var currentPage = ${pageModel.page};
 		var limit = 5;
 		$(function () {
 			window.pagObj = $('#pagination').twbsPagination({
@@ -81,6 +82,7 @@
 						$('#page').val(page);
 						$('#sortName').val('title');
 						$('#sortBy').val('asc');
+						$('#totalPage').val(totalPage);
 						$('#formSubmit').submit();
 					}
 				}

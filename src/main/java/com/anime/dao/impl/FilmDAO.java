@@ -63,10 +63,10 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 
 	@Override
 	public void createNewFilm(String title, Integer categoryId, String photo, Integer episode, Integer currentEpisode,
-			Timestamp createddate) {
+			Timestamp createdDate) {
 		// TODO Auto-generated method stub
 		String sql = "INSERT INTO film(title, categoryid, photo, view, episode, current_episode, rate, createddate) VALUES(?, ?, ?, 0, ?, ?, 0, ?)";
-		update(sql, title, categoryId, photo, episode, currentEpisode, createddate);
+		update(sql, title, categoryId, photo, episode, currentEpisode, createdDate);
 	}
 
 	@Override
