@@ -43,25 +43,10 @@
                         <div class="section-title">
                             <h5>List Name</h5>
                         </div>
-                        <a href="#">Ep 01</a>
-                        <a href="#">Ep 02</a>
-                        <a href="#">Ep 03</a>
-                        <a href="#">Ep 04</a>
-                        <a href="#">Ep 05</a>
-                        <a href="#">Ep 06</a>
-                        <a href="#">Ep 07</a>
-                        <a href="#">Ep 08</a>
-                        <a href="#">Ep 09</a>
-                        <a href="#">Ep 10</a>
-                        <a href="#">Ep 11</a>
-                        <a href="#">Ep 12</a>
-                        <a href="#">Ep 13</a>
-                        <a href="#">Ep 14</a>
-                        <a href="#">Ep 15</a>
-                        <a href="#">Ep 16</a>
-                        <a href="#">Ep 17</a>
-                        <a href="#">Ep 18</a>
-                        <a href="#">Ep 19</a>
+                        <c:forEach var="episode" begin="1" end="${film.episode}">
+                              <a href="<c:url value = '/xem-phim?type=watch&id=1&episode=${episode}'/>">Ep ${episode}</a>
+                     </c:forEach> 
+                       
                     </div>
                 </div>
             </div>
@@ -84,15 +69,20 @@
                         </c:forEach>
                     
                     </div>
+                    
+                     <c:if test="${not empty USERMODEL}">
                     <div class="anime__details__form">
                         <div class="section-title">
                             <h5>Your Comment</h5>
                         </div>
-                        <form action="#">
-                            <textarea placeholder="Your Comment"></textarea>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                             <form action="<c:url value = '/xem-phim?type=newComment'/>" method="post">
+                                <textarea id="content" name="content" placeholder="Your Comment"></textarea>
+                                <input type="hidden" id="userid" name="userId" value="${USERMODEL.id}">
+                                <input type="hidden" id="filmid" name="filmId" value="${film.id}">
+                                <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>
+                    </c:if>
                 </div>
             </div>
         </div>

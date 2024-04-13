@@ -3,7 +3,6 @@ package com.anime.dao;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.anime.model.CommentModel;
 import com.anime.model.FilmModel;
 import com.anime.paging.Pageble;
 
