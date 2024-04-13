@@ -40,7 +40,7 @@
 				<li><a href='<c:url value="/admin-new?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc"/>'>
 						<i class="menu-icon fa fa-caret-right"></i> Danh sách Phim
 					</a> <b class="arrow"></b></li>
-				<li><a href='<c:url value="/admin-blog?type=blog"/>'>
+				<li><a href='<c:url value="/admin-blog?type=list&page=1&maxPageItem=5&sortName=title&sortBy=asc"/>'>
 						<i class="menu-icon fa fa-caret-right"></i> Danh sách Blog
 					</a> <b class="arrow"></b></li>
 			</ul>
