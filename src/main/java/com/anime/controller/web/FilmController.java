@@ -37,6 +37,7 @@ public class FilmController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/film-details.jsp");
 			rd.forward(request, response);
 		} else if (type != null & type.equals("watch")) {
+			request.setAttribute("comment", commentService.findCommentByFilmId(id));
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/watch.jsp");
 			rd.forward(request, response);
 		}
