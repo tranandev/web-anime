@@ -26,5 +26,15 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
 		sql.append(" ORDER BY c.createddate DESC LIMIT 4");
 		return query(sql.toString(), new CommentMapper());
 	}
+	
+	@Override
+	public List<CommentModel> findCommentByFilmId(String id) {
+		// TODO Auto-generated method stub
+
+		StringBuilder sql = new StringBuilder("SELECT content, fullname, photo FROM comment AS c");
+		sql.append(" INNER JOIN user AS u ON u.id = c.user_id");
+		sql.append(" WHERE c.film_id = ?");
+		return query(sql.toString(), new CommentMapper(), id);
+	}
 
 }

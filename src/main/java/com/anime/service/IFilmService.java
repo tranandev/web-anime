@@ -30,5 +30,4 @@ public interface IFilmService {
 
 	void delete(String id);
 
-	List<CommentModel> findCommentByFilmId(String id);
 }

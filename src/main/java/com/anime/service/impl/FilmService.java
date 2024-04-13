@@ -86,10 +86,4 @@ public class FilmService implements IFilmService {
 		return filmDAO.findByRecentlyAdd();
 	}
 
-	@Override
-	public List<CommentModel> findCommentByFilmId(String id) {
-		// TODO Auto-generated method stub
-		return filmDAO.findCommentByFilmId(id);
-	}
-
 }

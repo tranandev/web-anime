@@ -28,4 +28,10 @@ public class CommentService implements ICommentService {
 		return commentDAO.findByNewComment();
 	}
 
+	@Override
+	public List<CommentModel> findCommentByFilmId(String id) {
+		// TODO Auto-generated method stub
+		return commentDAO.findCommentByFilmId(id);
+	}
+
 }

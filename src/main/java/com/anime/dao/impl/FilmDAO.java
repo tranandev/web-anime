@@ -114,14 +114,4 @@ public class FilmDAO extends AbstractDAO<FilmModel> implements IFilmDAO {
 		update(sql, id);
 	}
 
-	@Override
-	public List<CommentModel> findCommentByFilmId(String id) {
-		// TODO Auto-generated method stub
-
-		StringBuilder sql = new StringBuilder("SELECT content, fullname, photo FROM comment AS c");
-		sql.append(" INNER JOIN user AS u ON u.id = c.user_id");
-		sql.append(" WHERE c.film_id = ?");
-		return query(sql.toString(), new CommentMapper(), id);
-	}
-
 }

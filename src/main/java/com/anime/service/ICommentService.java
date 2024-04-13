@@ -9,5 +9,7 @@ public interface ICommentService {
 	void createNewComment(CommentModel newComment);
 
 	List<CommentModel> findByNewComment();
+	
+	List<CommentModel> findCommentByFilmId(String id);
 
 }
